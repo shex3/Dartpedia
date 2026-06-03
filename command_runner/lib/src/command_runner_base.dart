@@ -9,32 +9,32 @@ class CommandRunner {
 
 // Add a constructor that accepts the optional callback.
 
-CommandRunner({this.onError});
+CommandRunner({this.onOutput, this.onError});
 
-  final Map<String, Command> _commands = <String, Command>{};
+  FutureOr<void> Function(String)? onOutput;
 
-  UnmodifiableSetView<Command> get commands =>
-      UnmodifiableSetView<Command>(<Command>{..._commands.values});
-
-  // Define the onError property.
- FutureOr<void> Function(Object)? onError;
+  FutureOr<void> Function(Object)? onError;
 
   Future<void> run(List<String> input) async {
-  // [Step 6 update] try/catch added
-  try {
-    final ArgResults results = parse(input);
-    if (results.command != null) {
-      Object? output = await results.command!.run(results);
-      print(output.toString());
-    }
-  } on Exception catch (exception){
-    if (onError != null) {
-      onError!(exception);
-    } else {
-      rethrow;
+    try {
+      final ArgResults results = parse(input);
+      if (results.command != null) {
+        Object? output = await results.command!.run(results);
+        if (onOutput != null) {
+          await onOutput!(output.toString());
+        } else {
+          print(output.toString());
+        }
+      }
+    } on Exception catch (exception) {
+      if (onError != null) {
+        onError!(exception);
+      } else {
+        rethrow;
+      }
     }
   }
-}
+
 
   void addCommand(Command command) {
     // TODO: handle error (Commands can't have names that conflict)
