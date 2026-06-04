@@ -6,7 +6,22 @@ O aplicativo cli faz parte do projeto Dartpedia.
 
 O cli eh nosso primeiro aplicativo que esta sendo desenvolvido usando Dart.
 
-cli.dart - FIca localizado na pasta dartpedia, em /dartpedia/cli/bin.
+cli.dart - FIca localizado na pasta dartpedia, em /dartpedia/cli/t version = '0.0.23';
+
+void main(List<String> arguments) {
+  // [Step 6 update] Add onError method
+  var commandRunner = CommandRunner(
+    onError: (Object error) {
+      if (error is Error) {
+        throw error;
+      }
+      if (error is Exception) {
+        print(error);
+      }
+    },
+  )..addCommand(HelpCommand());
+  commandRunner.run(arguments);
+}in.
 oking up articles about "$articleTitle". Please wait.');
 
   // Call the API and await the result
@@ -2201,12 +2216,15 @@ Saida: CommandRunner received arguments: [wikipedia, Computer_programming]
 // Codigo:
 
 import 'package:command_runner/command_runner.dart';
+import 'package:command_runner/src/console.dart';
 
-const version = '0.0.23';
+const version = '0.0.1';
 
 void main(List<String> arguments) {
-  // [Step 6 update] Add onError method
   var commandRunner = CommandRunner(
+    onOutput: (String output) async {
+      await write(output);
+    },
     onError: (Object error) {
       if (error is Error) {
         throw error;

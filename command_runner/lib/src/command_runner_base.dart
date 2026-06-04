@@ -8,6 +8,8 @@ import 'exceptions.dart';
 class CommandRunner {
 
 // Add a constructor that accepts the optional callback.
+final Map<String, Command> _commands = {};
+  Iterable<Command> get commands => _commands.values;
 
 CommandRunner({this.onOutput, this.onError});
 
