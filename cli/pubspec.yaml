@@ -19,5 +19,7 @@ dev_dependencies:
   lints: ^6.0.0
   test: ^1.25.6
 
-
+wikipedia:
+  path: ../wikipedia
+logging: ^1.2.0
 
