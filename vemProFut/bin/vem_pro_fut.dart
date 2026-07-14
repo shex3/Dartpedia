@@ -1,5 +1,21 @@
-import 'package:vem_pro_fut/vem_pro_fut.dart' as vem_pro_fut;
+import 'package:vem_pro_fut/selecao.dart';
+import 'package:vem_pro_fut/jogo.dart';
 
-void main(List<String> arguments) {
-  print('Hello world: ${vem_pro_fut.calculate()}!');
+void main() {
+  Selecao brasil = Selecao(
+    "Brasil",
+    Grupo.A,
+    posicaoRankingFifa: 5,
+ );
+
+  Selecao mexico = Selecao(
+    "México",
+    Grupo.A,
+    posicaoRankingFifa: 15,
+ );
+
+  registrarJogo(brasil, mexico);
+
+  print(brasil);
+  print(mexico);
 }
