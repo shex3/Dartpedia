@@ -1,4 +1,8 @@
 # **Projeto Dartpedia** 
+> 🔀 Este é um **fork** de um trabalho escolar em grupo. O repositório 
+> original pertence ao líder do grupo, [Hzzyn-22](https://github.com/Hzzyn-22/Dartpedia), 
+> e foi trazido para minha conta pessoal ([shex3](https://github.com/shex3)) 
+> para compor meu portfólio.
 
 # T1DEV-T5 - Professor Irineu Moura Caldeira
 
@@ -119,6 +123,14 @@ ___
     dart run bin/cli.dart article Brazil
     ```
     Busca e exibe o conteúdo do artigo selecionado.
+___
+## MINHA CONTRIBUIÇÃO (Gabriel Barbosa)
+
+*   Configuração inicial do espaço de trabalho Dart e criação do pacote `wikipedia`
+*   Integração com a API da Wikipédia: dependência HTTP, testes de desserialização de dados JSON e implementação de logging em `cli.dart`
+*   Núcleo da CLI (`command_runner`): hierarquia de classes de argumentos, tratamento de erros, comando de echo colorido e callback de saída (`onOutput`)
+*   Projeto `vemProFut`: desenvolvimento do "Modelador de Seleções" e do "Simulador da Fase de Grupos – Copa 2026"
+
 ___
 ## EQUIPE
 
